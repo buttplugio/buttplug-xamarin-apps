@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="c5202d09-0b35-4a5d-b506-09e59921797b" Publisher="CN=nzsma" Version="0.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="c5202d09-0b35-4a5d-b506-09e59921797b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>Buttplug IO</DisplayName>
+    <PublisherDisplayName>Metafetish</PublisherDisplayName>
+    <Logo>Assets\Logos\PackageLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ButtplugApp.UWP.App">
+      <uap:VisualElements DisplayName="Buttplug IO" Description="Stick It In." BackgroundColor="black" Square150x150Logo="Assets\Logos\MediumTile.png" Square44x44Logo="Assets\Logos\AppIcon.png">
+        <uap:DefaultTile ShortName="Buttplug IO" Square310x310Logo="Assets\Logos\LargeTile.png" Wide310x150Logo="Assets\Logos\WideTile.png" Square71x71Logo="Assets\Logos\SmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:LockScreen Notification="badge" BadgeLogo="Assets\Logos\BadgeLogo.png" />
+        <uap:SplashScreen Image="Assets\Logos\SplashScreen.png" BackgroundColor="transparent" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
