@@ -1,0 +1,28 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <remove-node path="/api/package[@name='com.koushikdutta.async']/class[@name='ArrayDeque.DeqIterator']/method[@name='next']" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async']/class[@name='ArrayDeque.DescendingIterator']/method[@name='next']" />
+
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.cache']/class[@name='ResponseCacheMiddleware.Entry']/constructor[@name='ResponseCacheMiddleware.Entry' and count(parameter)=4 and parameter[1][@type='android.net.Uri'] and parameter[2][@type='com.koushikdutta.async.http.cache.RawHeaders'] and parameter[3][@type='com.koushikdutta.async.http.AsyncHttpRequest'] and parameter[4][@type='com.koushikdutta.async.http.cache.RawHeaders']]" />
+
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.spdy']/class[@name='AsyncSpdyConnection.SpdySocket']/constructor[@name='AsyncSpdyConnection.SpdySocket' and count(parameter)=4]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.spdy']/class[@name='AsyncSpdyConnection.SpdySocket']/method[@name='receiveHeaders' and count(parameter)=2 and parameter[1][@type='java.util.List&lt;com.koushikdutta.async.http.spdy.Header&gt;'] and parameter[2][@type='com.koushikdutta.async.http.spdy.HeadersMode']]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.spdy']/class[@name='AsyncSpdyConnection']/method[@name='headers' and count(parameter)=6 and parameter[1][@type='boolean'] and parameter[2][@type='boolean'] and parameter[3][@type='int'] and parameter[4][@type='int'] and parameter[5][@type='java.util.List&lt;com.koushikdutta.async.http.spdy.Header&gt;'] and parameter[6][@type='com.koushikdutta.async.http.spdy.HeadersMode']]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.spdy']/class[@name='AsyncSpdyConnection']/method[@name='newStream' and count(parameter)=3 and parameter[1][@type='java.util.List&lt;com.koushikdutta.async.http.spdy.Header&gt;'] and parameter[2][@type='boolean'] and parameter[3][@type='boolean']]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.spdy']/class[@name='AsyncSpdyConnection']/method[@name='pushPromise' and count(parameter)=3 and parameter[1][@type='int'] and parameter[2][@type='int'] and parameter[3][@type='java.util.List&lt;com.koushikdutta.async.http.spdy.Header&gt;']]" />
+
+  <attr path="/api/package[@name='com.koushikdutta.async']/class[@name='Util']" name="name">Utils</attr>
+
+  <remove-node path="/api/package[@name='com.koushikdutta.async.future']/interface[@name='Cancellable']/method[@name='isCancelled' and count(parameter)=0]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.future']/interface[@name='Cancellable']/method[@name='isDone' and count(parameter)=0]" />
+  <remove-node path="/api/package[@name='com.koushikdutta.async.future']/interface[@name='Cancellable']/method[@name='cancel' and count(parameter)=0]" />
+
+  <remove-node path="/api/package[@name='com.koushikdutta.async.http.body']/interface[@name='AsyncHttpRequestBody']/method[@name='get' and count(parameter)=0]" />
+</metadata>
