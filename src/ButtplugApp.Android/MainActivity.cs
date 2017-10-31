@@ -3,6 +3,8 @@ using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Android.Content;
+using ButtplugApp.Android.Services;
 
 namespace ButtplugApp.Android
 {
@@ -15,6 +17,9 @@ namespace ButtplugApp.Android
 
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            var intent = new Intent(this, typeof(WebSocketService));
+            StartService(intent);
         }
     }
 }

@@ -155,6 +155,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\WebSocketService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -176,6 +177,10 @@
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\libs\com.koushikdutta.async\Com.Koushikdutta.Async.csproj">
+      <Project>{0385baa5-dfd7-4248-9cac-77e8e7ac9212}</Project>
+      <Name>Com.Koushikdutta.Async</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BluttplugApp\ButtplugApp.csproj">
       <Project>{56873e92-fb88-4b99-a10b-2af019a33b56}</Project>
       <Name>ButtplugApp</Name>
