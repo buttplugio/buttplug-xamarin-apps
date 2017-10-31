@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88350013-FFFF-4C20-80AE-5F78A4BDE764}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buttplug.Server.XamarinBluetoothManager", "src\Buttplug.Server.XamarinBluetoothManager\Buttplug.Server.XamarinBluetoothManager.csproj", "{881CDBFF-B8C5-4DD4-86AF-A9F6F9F70A03}"
