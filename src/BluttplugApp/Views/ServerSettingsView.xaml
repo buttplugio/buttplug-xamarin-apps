@@ -31,14 +31,16 @@
                 <Label Text="Status" HorizontalOptions="StartAndExpand" />
                 <Label Text="Not Connected"/>
             </StackLayout>-->
+
+            <!--A simple seperator-->
+            <BoxView HeightRequest="1" Color="#88888888" HorizontalOptions="FillAndExpand" />
             
             <StackLayout Orientation="Horizontal">
                 <Label Style="{DynamicResource TitleStyle}" Text="Logs" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
                 <Button x:Name="ShareLogs" Text="Save Logs" HorizontalOptions="End" />
             </StackLayout>
-            <!--A simple seperator-->
-            <BoxView HeightRequest="1" Color="#88888888" HorizontalOptions="FillAndExpand" />
             <Editor VerticalOptions="FillAndExpand" Text="logs will be displayed here"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </rxui:ReactiveContentPage>

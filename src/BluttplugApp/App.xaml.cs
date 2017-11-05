@@ -29,11 +29,12 @@ namespace ButtplugApp
             service.Register<IViewFor<AboutViewModel>>(() => new About());
             service.Register<IViewFor<LicenseViewModel>>(() => new License());
             service.Register<IViewFor<DeviceListViewModel>>(() => new DeviceListView());
+            service.Register<IViewFor<StatusViewModel>>(() => new StatusView());
             service.Register<IViewFor<ServerSettingsViewModel>>(() => new ServerSettingsView());
 
             Router = new RoutingState();
             Router.NavigateAndReset
-                  .Execute(new DeviceListViewModel())
+                  .Execute(new StatusViewModel())
                   .Subscribe();
 
             MainPage = new MainPage();

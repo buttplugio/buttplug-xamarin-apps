@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+             xmlns:local="clr-namespace:ButtplugApp"
+             x:Class="ButtplugApp.Views.StatusView"
+             x:TypeArguments="local:ViewModels.StatusViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="StartStop" Name="Start" Order="Primary" />
+        <ToolbarItem x:Name="Refresh" Name="Refresh" Order="Secondary" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+                <Label x:Name="Status"
+                       Style="{DynamicResource SubtitleStyle}"
+                       Text="Status: Stopped"/>
+            <ListView x:Name="ListeningAddresses">
+                <ListView.Header>
+                    <Label Style="{DynamicResource TitleStyle}" Text="Addresses"/>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="ws://192.168.1.10:12345/buttplug"
+                                  Detail="Tap &amp; Hold to copy to clipboard"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</rxui:ReactiveContentPage>2
