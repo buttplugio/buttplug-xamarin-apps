@@ -9,8 +9,8 @@
         <ToolbarItem x:Name="Update" Text="Update" />
     </rxui:ReactiveContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Padding="5">
-            <Label Style="{DynamicResource SubtitleTextStyle}" Text="Web Socket Settings" />
+        <StackLayout Padding="10">
+            <Label Style="{DynamicResource TitleStyle}" Text="Web Socket Settings" />
             <Label Text="Port" />
             <Entry x:Name="Port" Placeholder="e.g. 12345"/>
             <StackLayout Orientation="Horizontal">
@@ -26,14 +26,18 @@
                 <Switch x:Name="AutoStartServer" HorizontalOptions="End" />
             </StackLayout>
 
-            <Label Style="{DynamicResource SubtitleTextStyle}" Text="Status" />
+            <!--<Label Style="{DynamicResource TitleStyle}" Text="Status" />
             <StackLayout Orientation="Horizontal">
                 <Label Text="Status" HorizontalOptions="StartAndExpand" />
                 <Label Text="Not Connected"/>
+            </StackLayout>-->
+            
+            <StackLayout Orientation="Horizontal">
+                <Label Style="{DynamicResource TitleStyle}" Text="Logs" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+                <Button x:Name="ShareLogs" Text="Save Logs" HorizontalOptions="End" />
             </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Button x:Name="ShareLogs" Text="Save Logs" />
-            </StackLayout>
+            <!--A simple seperator-->
+            <BoxView HeightRequest="1" Color="#88888888" HorizontalOptions="FillAndExpand" />
             <Editor VerticalOptions="FillAndExpand" Text="logs will be displayed here"/>
         </StackLayout>
     </ContentPage.Content>

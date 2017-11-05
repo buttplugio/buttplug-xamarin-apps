@@ -8,12 +8,16 @@ using Xamarin.Forms.Xaml;
 using ButtplugApp.Pages;
 using ButtplugApp.ViewModels;
 using ButtplugApp.Views;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
 
 namespace ButtplugApp
 {
     public partial class App : Application, IScreen
     {
         public RoutingState Router { get; protected set; }
+
+        public ISettings Settings { get => CrossSettings.Current; }
 
         public App()
         {

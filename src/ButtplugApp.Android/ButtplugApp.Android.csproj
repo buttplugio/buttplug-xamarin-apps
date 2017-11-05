@@ -83,6 +83,12 @@
     <Reference Include="Plugin.BluetoothLE.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.BluetoothLE.5.1.0\lib\MonoAndroid10\Plugin.BluetoothLE.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="ReactiveUI, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\reactiveui.8.0.0-alpha0108\lib\monoandroid70\ReactiveUI.dll</HintPath>
     </Reference>
