@@ -18,8 +18,8 @@ namespace ButtplugApp.Android
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            var intent = new Intent(this, typeof(WebSocketService));
-            StartService(intent);
+            //var intent = new Intent(this, typeof(WebSocketService));
+            //StartService(intent);
         }
     }
 }

@@ -10,10 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Plugin.BluetoothLE" Version="5.0.0" />
-    <PackageReference Include="reactiveui" Version="7.4.0" />
-    <PackageReference Include="reactiveui-xamforms" Version="7.4.0" />
-    <PackageReference Include="Xamarin.Forms" Version="2.4.0.282" />
+    <PackageReference Include="Plugin.BluetoothLE" Version="5.1.0" />
+    <PackageReference Include="reactiveui" Version="8.0.0-alpha0108" />
+    <PackageReference Include="reactiveui-xamforms" Version="8.0.0-alpha0108" />
+    <PackageReference Include="Xamarin.Forms" Version="2.4.0.38779" />
   </ItemGroup>
 
 </Project>

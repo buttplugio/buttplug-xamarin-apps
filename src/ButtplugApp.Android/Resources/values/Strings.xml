@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Buttplug IO</string>
+  <string name="notification_server_running">Server is running.</string>
+  <string name="notification_stop">Stop</string>
 </resources>
