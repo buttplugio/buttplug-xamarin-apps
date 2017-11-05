@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                          xmlns:local="clr-namespace:ButtplugApp"
+                          x:Class="ButtplugApp.Views.About"
+                          x:TypeArguments="local:ViewModels.AboutViewModel">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                
+        <StackLayout Orientation="Horizontal">
+            <Image Source="ic_buttplug_logo" WidthRequest="128" HeightRequest="128" VerticalOptions="Start" />
+            <StackLayout Orientation="Vertical">
+                <Label Text="Buttplug IO App"
+                       Style="{DynamicResource TitleStyle}" />
+                <Button Text="Documentation" Clicked="OpenDocumentation"/>
+                <Button Text="Source Code" Clicked="OpenSourceCode"/>
+                <Button Text="License" Clicked="OpenLicense"/>
+
+            </StackLayout>
+        </StackLayout>
+                <Label Text="Buttplug and the corresponding applications and libraries are provided open source and free of charge. If you would like to help sponsor further development of this and other adult toy and interface software, please consider donating to our patreon campaign at https://patreon.com/qdot, or by clicking on the Patreon image below. Thanks, and enjoy buttplugging!" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</rxui:ReactiveContentPage>

@@ -30,6 +30,16 @@ namespace ButtplugApp.ViewModels
                     {
                         Title = "Settings",
                         Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new ServerSettingsViewModel()).Subscribe())
+                    },
+                    new NavigationEntry
+                    {
+                        Title = "About",
+                        Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new AboutViewModel()).Subscribe())
+                    },
+                    new NavigationEntry
+                    {
+                        Title = "License",
+                        Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new LicenseViewModel()).Subscribe())
                     }
                 }
             };

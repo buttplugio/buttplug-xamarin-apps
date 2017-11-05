@@ -26,6 +26,8 @@ namespace ButtplugApp
             var service = Locator.CurrentMutable;
 
             service.RegisterConstant<IScreen>(this);
+            service.Register<IViewFor<AboutViewModel>>(() => new About());
+            service.Register<IViewFor<LicenseViewModel>>(() => new License());
             service.Register<IViewFor<DeviceListViewModel>>(() => new DeviceListView());
             service.Register<IViewFor<ServerSettingsViewModel>>(() => new ServerSettingsView());
 
