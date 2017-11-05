@@ -7,7 +7,9 @@
                        x:TypeArguments="local:ViewModels.NavigationEntry">
   <ViewCell.View>
         <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+            <Image WidthRequest="50" />
             <Label x:Name="Title"
+                   Margin="40, 0, 0, 0"
                    VerticalOptions="FillAndExpand" 
                    VerticalTextAlignment="Center" 
                    FontSize="24"/>
