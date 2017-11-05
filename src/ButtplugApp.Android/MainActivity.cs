@@ -13,13 +13,12 @@ namespace ButtplugApp.Android
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ToolbarResource = Resource.Layout.Toolbar;
+
             base.OnCreate(savedInstanceState);
 
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-
-            //var intent = new Intent(this, typeof(WebSocketService));
-            //StartService(intent);
         }
     }
 }

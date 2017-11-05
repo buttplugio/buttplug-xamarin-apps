@@ -6,8 +6,8 @@
     <item name="colorPrimaryDark">@color/primaryDarkColor</item>
     <item name="colorAccent">@color/secondaryColor</item>
     
-    <item name="android:textColor">@color/primaryTextColor</item>
-    <item name="android:colorControlHighlight">@color/secondaryColor</item>
+    <!--<item name="android:textColor">@color/primaryTextColor</item>
+    <item name="android:colorControlHighlight">@color/secondaryColor</item>-->
 
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
