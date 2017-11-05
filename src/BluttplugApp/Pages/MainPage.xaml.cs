@@ -15,14 +15,14 @@ using System.Reactive.Disposables;
 namespace ButtplugApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ReactiveMasterDetailPage<MainPageViewModel>
+    public partial class MainPage : ReactiveMasterDetailPage<NavigationViewModel>
     {
         public MainPage()
         {
             InitializeComponent();
             IsPresented = false;
 
-            ViewModel = MainPageViewModel.Default;
+            ViewModel = NavigationViewModel.Default;
 
             this.WhenActivated(disposables =>
             {

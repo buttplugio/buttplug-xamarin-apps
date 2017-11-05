@@ -10,7 +10,7 @@ using System.Reactive;
 
 namespace ButtplugApp.ViewModels
 {
-    public class MainPageViewModel : ReactiveObject, ISupportsActivation
+    public class NavigationViewModel : ReactiveObject, ISupportsActivation
     {
         public ObservableCollection<NavigationEntry> NavigationItems = new ObservableCollection<NavigationEntry>();
 
@@ -20,9 +20,9 @@ namespace ButtplugApp.ViewModels
             set => this.RaiseAndSetIfChanged(ref _selectedItem, value);
         }
 
-        static MainPageViewModel()
+        static NavigationViewModel()
         {
-            Default = new MainPageViewModel()
+            Default = new NavigationViewModel()
             {
                 NavigationItems =
                 {
@@ -35,11 +35,11 @@ namespace ButtplugApp.ViewModels
             };
         }
 
-        public static MainPageViewModel Default { get; internal set; }
+        public static NavigationViewModel Default { get; internal set; }
 
         public ViewModelActivator Activator { get; } = new ViewModelActivator();
 
-        public MainPageViewModel()
+        public NavigationViewModel()
         {
             this.WhenActivated((CompositeDisposable disposables) =>
             {

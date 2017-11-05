@@ -20,7 +20,7 @@ using System.Reactive.Disposables;
 namespace ButtplugApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NavigationView : ReactiveContentPage<MainPageViewModel>
+    public partial class NavigationView : ReactiveContentPage<NavigationViewModel>
     {
         public NavigationView()
         {
