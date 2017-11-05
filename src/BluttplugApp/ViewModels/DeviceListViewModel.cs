@@ -2,7 +2,7 @@
 using ReactiveUI;
 using Splat;
 
-namespace ButtplugApp.ViewsModels
+namespace ButtplugApp.ViewModels
 {
     public class DeviceListViewModel : ReactiveObject, IRoutableViewModel
     {

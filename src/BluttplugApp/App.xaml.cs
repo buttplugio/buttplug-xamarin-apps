@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using ButtplugApp.Pages;
-using ButtplugApp.ViewsModels;
+using ButtplugApp.ViewModels;
 using ButtplugApp.Views;
 
 namespace ButtplugApp
@@ -23,6 +23,7 @@ namespace ButtplugApp
 
             service.RegisterConstant<IScreen>(this);
             service.Register<IViewFor<DeviceListViewModel>>(() => new DeviceListView());
+            service.Register<IViewFor<ServerSettingsViewModel>>(() => new ServerSettingsView());
 
             Router = new RoutingState();
             Router.NavigateAndReset

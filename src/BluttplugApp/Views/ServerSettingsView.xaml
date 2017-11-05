@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                          xmlns:local="clr-namespace:ButtplugApp"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                          xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                          x:Class="ButtplugApp.Views.ServerSettingsView"
+                          x:TypeArguments="local:ViewModels.ServerSettingsViewModel">
+    <rxui:ReactiveContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Update" Text="Update" />
+    </rxui:ReactiveContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Padding="5">
+            <Label Style="{DynamicResource SubtitleTextStyle}" Text="Web Socket Settings" />
+            <Label Text="Port" />
+            <Entry x:Name="Port" Placeholder="e.g. 12345"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Allow connections from this device only" HorizontalOptions="StartAndExpand" />
+                <Switch x:Name="LocalhostOnly" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Enable encryption (TLS)" HorizontalOptions="StartAndExpand" />
+                <Switch x:Name="EnableTLS" HorizontalOptions="End" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Start server when app is opened" HorizontalOptions="StartAndExpand" />
+                <Switch x:Name="AutoStartServer" HorizontalOptions="End" />
+            </StackLayout>
+
+            <Label Style="{DynamicResource SubtitleTextStyle}" Text="Status" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Status" HorizontalOptions="StartAndExpand" />
+                <Label Text="Not Connected"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Button x:Name="ShareLogs" Text="Save Logs" />
+            </StackLayout>
+            <Editor VerticalOptions="FillAndExpand" Text="logs will be displayed here"/>
+        </StackLayout>
+    </ContentPage.Content>
+</rxui:ReactiveContentPage>

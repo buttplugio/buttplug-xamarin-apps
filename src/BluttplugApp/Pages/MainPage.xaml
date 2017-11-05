@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-                  x:Class="ButtplugApp.Pages.MainPage"
-                  xmlns:pages="clr-namespace:ButtplugApp.Pages">
+<rxui:ReactiveMasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                               xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+                               xmlns:local="clr-namespace:ButtplugApp"
+                               x:Class="ButtplugApp.Pages.MainPage"
+                               x:TypeArguments="local:ViewModels.MainPageViewModel">
     <MasterDetailPage.Master>
-        <pages:MainPageMaster x:Name="MasterPage" />
+        <local:Views.NavigationView x:Name="Navigation"/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <rxui:RoutedViewHost/>
     </MasterDetailPage.Detail>
-</MasterDetailPage>
+</rxui:ReactiveMasterDetailPage>

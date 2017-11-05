@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using ButtplugApp.ViewsModels;
+using ButtplugApp.ViewModels;
 
 
 namespace ButtplugApp.Views

@@ -10,10 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Buttplug.Core" Version="1.0.0-dev" />
+    <PackageReference Include="Buttplug.Server" Version="1.0.0-dev" />
     <PackageReference Include="Plugin.BluetoothLE" Version="5.1.0" />
     <PackageReference Include="reactiveui" Version="8.0.0-alpha0108" />
     <PackageReference Include="reactiveui-xamforms" Version="8.0.0-alpha0108" />
     <PackageReference Include="Xamarin.Forms" Version="2.4.0.38779" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\NavigationView.xaml.cs">
+      <DependentUpon>NavigationView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>
