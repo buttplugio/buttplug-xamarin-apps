@@ -4,7 +4,7 @@
                                xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
                                xmlns:local="clr-namespace:ButtplugApp"
                                x:Class="ButtplugApp.Pages.MainPage"
-                               x:TypeArguments="local:ViewModels.MainPageViewModel">
+                               x:TypeArguments="local:ViewModels.NavigationViewModel">
     <MasterDetailPage.Master>
         <local:Views.NavigationView x:Name="Navigation"/>
     </MasterDetailPage.Master>

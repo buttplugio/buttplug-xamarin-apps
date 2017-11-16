@@ -11,7 +11,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-                <Label x:Name="Status"
+            <Label x:Name="Status"
                        Style="{DynamicResource SubtitleStyle}"
                        Text="Status: Stopped"/>
             <ListView x:Name="ListeningAddresses">
@@ -27,4 +27,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-</rxui:ReactiveContentPage>2
+</rxui:ReactiveContentPage>

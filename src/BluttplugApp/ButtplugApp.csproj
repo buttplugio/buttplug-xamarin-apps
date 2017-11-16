@@ -19,10 +19,4 @@
     <PackageReference Include="Xamarin.Forms" Version="2.4.0.38779" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Views\NavigationView.xaml.cs">
-      <DependentUpon>NavigationView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
 </Project>
