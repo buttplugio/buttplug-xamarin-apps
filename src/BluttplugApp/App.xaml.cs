@@ -17,7 +17,8 @@ namespace ButtplugApp
     {
         public RoutingState Router { get; protected set; }
 
-        public ISettings Settings { get => CrossSettings.Current; }
+        private Settings _settings = null;
+        public Settings Settings => _settings ?? (_settings = new Settings(CrossSettings.Current));
 
         public App()
         {
