@@ -10,6 +10,7 @@ using ButtplugApp.ViewModels;
 using ButtplugApp.Views;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
+using ButtplugApp.Models;
 
 namespace ButtplugApp
 {
@@ -18,6 +19,7 @@ namespace ButtplugApp
         public RoutingState Router { get; protected set; }
 
         private Settings _settings = null;
+
         public Settings Settings => _settings ?? (_settings = new Settings(CrossSettings.Current));
 
         public App()
@@ -39,6 +41,15 @@ namespace ButtplugApp
                   .Subscribe();
 
             MainPage = new MainPage();
+
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            if (Settings.StartWhenLaunched)
+                MessagingCenter.Send(new ServerCommandMessage { Command = ServerCommand.Start }, nameof(ServerCommandMessage));
         }
     }
 }

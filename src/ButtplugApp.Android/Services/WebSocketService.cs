@@ -1,54 +1,79 @@
-﻿using Android.App;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Java.Lang;
+using Java.Util.Concurrent;
+
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.App;
+
 using Com.Koushikdutta.Async.Http;
 using Com.Koushikdutta.Async.Http.Server;
-using System.Collections.Generic;
-using System;
-using System.Linq;
 using static Com.Koushikdutta.Async.Http.Server.AsyncHttpServer;
 using Com.Koushikdutta.Async.Callback;
-using Java.Lang;
-using Java.Util.Concurrent;
-using Android.Support.V4.App;
-using ButtplugApp.Android.Receivers;
 using Com.Koushikdutta.Async;
+using Xamarin.Forms;
+
 using Buttplug.Core;
+using ButtplugApp.Android.Receivers;
 using ButtplugError = Buttplug.Core.Messages.Error;
+
 using Buttplug.Server;
+using ButtplugApp.Models;
+using Android.Widget;
+using Plugin.Settings;
 
 namespace ButtplugApp.Android.Services
 {
     [Service]
     public class WebSocketService : Service, IRunnable
     {
-        internal AsyncHttpServer _server;
-        internal readonly Dictionary<string, MyWebSocketConnection> _sockets;
-        internal readonly IScheduledExecutorService _timer;
+        internal AsyncHttpServer Server;
+        internal readonly Dictionary<string, MyWebSocketConnection> Sockets;
+        internal readonly IScheduledExecutorService Timer;
+        internal readonly Settings Settings;
         private readonly IButtplugServerFactory _serverFactory;
+        private readonly App _app;
 
         public WebSocketService()
         {
-            _timer = Executors.NewSingleThreadScheduledExecutor();
-            _sockets = new Dictionary<string, MyWebSocketConnection>();
-            _serverFactory = null; // serverFactory;
+            _app = Xamarin.Forms.Application.Current as App;
+
+            Timer = Executors.NewSingleThreadScheduledExecutor();
+            Sockets = new Dictionary<string, MyWebSocketConnection>();
+            _serverFactory = DependencyService.Get<IButtplugServerFactory>();
+
+            Settings = new Settings(CrossSettings.Current);
         }
 
         public override void OnCreate()
         {
             base.OnCreate();
 
-            _sockets.Clear();
+            Sockets.Clear();
 
-            _server = new AsyncHttpServer();
-            _server.Websocket("/", new MyWebSocketServer(this, _serverFactory));
-            _server.Listen(Resources.GetInteger(Resource.Integer.server_port));
+            Server = new AsyncHttpServer();
+            Server.Websocket("/", new MyWebSocketServer(this, _serverFactory));
+            if (Settings.EnableTLS)
+            {
+                //Server.ListenSecure(Settings.WebSocketPort, );
+            }
+            else
+            {
+                Server.Listen(Settings.WebSocketPort);
+            }
 
             //RaiseStartedEvent();
             CreateForegroundNotification();
 
-            _timer.ScheduleAtFixedRate(this, 3000, 3000, TimeUnit.Milliseconds);
+            Timer.ScheduleAtFixedRate(this, 3000, 3000, TimeUnit.Milliseconds);
+
+            MessagingCenter.Subscribe<ServerCommandMessage>(this, nameof(ServerCommandMessage), OnServerMessage);
+
+            Toast.MakeText(this, "starting", ToastLength.Short).Show();
         }
 
         private void CreateForegroundNotification()
@@ -79,11 +104,13 @@ namespace ButtplugApp.Android.Services
 
         public override void OnDestroy()
         {
-            _timer.ShutdownNow();
+            Timer.ShutdownNow();
             //EventBus.getDefault().removeAllStickyEvents();
             //EventBus.getDefault().postSticky(new ServerStoppedEvent());
-            _server.Stop();
+            Server.Stop();
             AsyncServer.Default.Stop(); // no, really, I mean stop
+
+            MessagingCenter.Unsubscribe<ServerCommandMessage>(this, nameof(ServerCommandMessage));
 
             base.OnDestroy();
         }
@@ -96,6 +123,15 @@ namespace ButtplugApp.Android.Services
         public void Run()
         {
             // throw new NotImplementedException();
+        }
+
+        private void OnServerMessage(ServerCommandMessage message)
+        {
+            if(message.Command == ServerCommand.Start)
+                Toast.MakeText(this, "Already Started", ToastLength.Short).Show();
+
+            if (message.Command == ServerCommand.Stop)
+                this.StopSelf();
         }
     }
 
@@ -112,27 +148,37 @@ namespace ButtplugApp.Android.Services
 
         public void OnConnected(IWebSocket webSocket, IAsyncHttpServerRequest request)
         {
-            var remoteId = request.ToString();
+            var socket = request.Socket as AsyncNetworkSocket;
+            if(socket == null)
+            {
+                webSocket.Send(new ButtplugJsonMessageParser().Serialize(new ButtplugError(
+                        $"Unsupported AsyncSocket type ({request.GetType().FullName})", ButtplugError.ErrorClass.ERROR_INIT, ButtplugConsts.SystemMsgId)));
+                webSocket.Close();
+                return;
+            }
+
+            var remoteId = $"{socket.RemoteAddress.Address.HostAddress}:{socket.RemoteAddress.Port}";
 
             // Only allow new connections from the same client
-            if (_webSocketService._sockets.Count > 0 && !_webSocketService._sockets.ContainsKey(remoteId))
+            if (_webSocketService.Sockets.Count > 0 && !_webSocketService.Sockets.ContainsKey(remoteId))
             {
                 webSocket.Send(new ButtplugJsonMessageParser().Serialize(new ButtplugError(
                         "WebSocketServer already in use!", ButtplugError.ErrorClass.ERROR_INIT, ButtplugConsts.SystemMsgId)));
                 webSocket.Close();
+                return;
             }
 
             var connection = new MyWebSocketConnection(_webSocketService, webSocket, _serverFactory.GetServer());
 
-            if (_webSocketService._sockets.ContainsKey(remoteId))
+            if (_webSocketService.Sockets.ContainsKey(remoteId))
             {
                 // Close the old connection 
-                _webSocketService._sockets[remoteId].WebSocket.Close();
-                _webSocketService._sockets[remoteId] = connection;
+                _webSocketService.Sockets[remoteId].WebSocket.Close();
+                _webSocketService.Sockets[remoteId] = connection;
             }
             else
             {
-                _webSocketService._sockets.Add(remoteId, connection);
+                _webSocketService.Sockets.Add(remoteId, connection);
             }
             //ConnectionAccepted?.Invoke(this, new ConnectionEventArgs(remoteId));
         }
@@ -165,14 +211,14 @@ namespace ButtplugApp.Android.Services
             }
             finally
             {
-                var remoteId = _webSocketService._sockets.First(c => c.Value.WebSocket == WebSocket).Key;
-                _webSocketService._sockets.Remove(remoteId);
+                var remoteId = _webSocketService.Sockets.First(c => c.Value.WebSocket == WebSocket).Key;
+                _webSocketService.Sockets.Remove(remoteId);
             }
         }
 
         public void OnStringAvailable(string s)
         {
-            var respMsgs = _buttplugServer.SendMessage(s).Result;
+            var respMsgs = _buttplugServer.SendMessage(s).GetAwaiter().GetResult();
             var respMsg = _buttplugServer.Serialize(respMsgs);
 
             WebSocket.Send(respMsg);

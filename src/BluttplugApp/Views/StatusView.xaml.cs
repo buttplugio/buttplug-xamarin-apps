@@ -19,7 +19,7 @@ namespace ButtplugApp.Views
 	{
 		public StatusView ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
 
             ListeningAddresses.ItemSelected += OnAddressSelected;
 
@@ -27,6 +27,13 @@ namespace ButtplugApp.Views
             {
                 this.OneWayBind(ViewModel, vm => vm.Addresses, v => v.ListeningAddresses.ItemsSource)
                 .DisposeWith(disposables);
+
+                this.BindCommand(ViewModel, 
+                        vm => vm.StartStopCommand, 
+                        v => v.StartStop, 
+                        nameof(StartStop.Clicked))
+                    .DisposeWith(disposables);
+
             });
 		}
 

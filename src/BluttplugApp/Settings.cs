@@ -7,7 +7,10 @@ namespace ButtplugApp
     {
         public const int WebSocketPort_Default = 12345;
         public const string WebSocketPort_Key = "server_websocket_port";
-        
+
+        public const int WebSocketPing_Default = 1000;
+        public const string WebSocketPing_Key = "server_websocket_ping";
+
         public const bool RestrictConnections_Default = true;
         public const string RestrictConnections_Key = "server_websocket_restrict_connections";
 
@@ -16,6 +19,9 @@ namespace ButtplugApp
 
         public const bool StartWhenLaunched_Default = true;
         public const string StartWhenLaunched_Key = "server_websocket_autostart";
+
+        public const string ServerName_Default = "Android Server";
+        public const string ServerName_Key = "server_name";
 
         public Settings(ISettings settings)
         {
@@ -28,6 +34,12 @@ namespace ButtplugApp
         {
             get => _settings.GetValueOrDefault(WebSocketPort_Key, WebSocketPort_Default);
             set => _settings.AddOrUpdateValue(WebSocketPort_Key, value);
+        }
+
+        public int WebSocketPing
+        {
+            get => _settings.GetValueOrDefault(WebSocketPing_Key, WebSocketPing_Default);
+            set => _settings.AddOrUpdateValue(WebSocketPing_Key, value);
         }
 
         public bool RestrictConnections
@@ -47,6 +59,14 @@ namespace ButtplugApp
             get => _settings.GetValueOrDefault(StartWhenLaunched_Key, StartWhenLaunched_Default);
             set => _settings.AddOrUpdateValue(StartWhenLaunched_Key, value);
         }
+
+        public string ServerName
+        {
+            get => _settings.GetValueOrDefault(ServerName_Key, ServerName_Default);
+            set => _settings.AddOrUpdateValue(ServerName_Key, value);
+        }
+
+        #region Wrapper proxy methods
 
         public decimal GetValueOrDefault(string key, decimal defaultValue, string fileName = null)
             => _settings.GetValueOrDefault(key, defaultValue, fileName);
@@ -113,5 +133,8 @@ namespace ButtplugApp
 
         public bool OpenAppSettings()
             => _settings.OpenAppSettings();
+
+        #endregion
+
     }
 }

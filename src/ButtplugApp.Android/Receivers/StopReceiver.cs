@@ -1,6 +1,9 @@
 ﻿using Android.Content;
 using Android.Widget;
 using ButtplugApp.Android.Services;
+using Xamarin.Forms;
+
+using ButtplugApp.Models;
 
 namespace ButtplugApp.Android.Receivers
 {
@@ -9,8 +12,7 @@ namespace ButtplugApp.Android.Receivers
     {
         public override void OnReceive(Context context, Intent intent)
         {
-            Toast.MakeText(context, "Received intent!", ToastLength.Short).Show();
-            context.StopService(new Intent(context, typeof(WebSocketService)));
+            MessagingCenter.Send(new ServerCommandMessage { Command = ServerCommand.Stop }, nameof(ServerCommandMessage));
         }
     }
 }
