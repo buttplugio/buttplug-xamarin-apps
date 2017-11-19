@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Buttplug.Core" Version="1.0.0-dev" />
-    <PackageReference Include="Buttplug.Server" Version="1.0.0-dev" />
+    <PackageReference Include="Buttplug.Core" Version="0.1.2.540-master" />
+    <PackageReference Include="Buttplug.Server" Version="0.1.2.540-master" />
     <PackageReference Include="Plugin.BluetoothLE" Version="5.2.0" />
     <PackageReference Include="Reactiveui" Version="8.0.0-alpha0113" />
     <PackageReference Include="ReactiveUI.XamForms" Version="8.0.0-alpha0113" />

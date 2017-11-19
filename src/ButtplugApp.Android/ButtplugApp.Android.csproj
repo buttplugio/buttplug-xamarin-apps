@@ -54,11 +54,11 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Buttplug.Core, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Buttplug.Core.1.0.0-dev\lib\netstandard1.4\Buttplug.Core.dll</HintPath>
+    <Reference Include="Buttplug.Core, Version=0.1.2.540, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Buttplug.Core.0.1.2.540-master\lib\netstandard2.0\Buttplug.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Buttplug.Server, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Buttplug.Server.1.0.0-dev\lib\netstandard1.4\Buttplug.Server.dll</HintPath>
+    <Reference Include="Buttplug.Server, Version=0.1.2.540, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Buttplug.Server.0.1.2.540-master\lib\netstandard2.0\Buttplug.Server.dll</HintPath>
     </Reference>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.5.0.91635\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
