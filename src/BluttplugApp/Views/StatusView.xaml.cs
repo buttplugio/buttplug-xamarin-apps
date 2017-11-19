@@ -25,6 +25,16 @@ namespace ButtplugApp.Views
 
             this.WhenActivated(disposables =>
             {
+                this.OneWayBind(ViewModel,
+                        vm => vm.StartStopText,
+                        v => v.StartStop.Text)
+                    .DisposeWith(disposables);
+
+                this.OneWayBind(ViewModel, 
+                        vm => vm.StatusText, 
+                        v => v.Status.Text)
+                    .DisposeWith(disposables);
+
                 this.OneWayBind(ViewModel, vm => vm.Addresses, v => v.ListeningAddresses.ItemsSource)
                 .DisposeWith(disposables);
 

@@ -6,18 +6,23 @@ using System.Text;
 using Xamarin.Forms;
 
 using ButtplugApp.Models;
+using System.Resources;
 
 namespace ButtplugApp.ViewModels
 {
     public class StatusViewModel : ReactiveObject, IRoutableViewModel
     {
-        public string UrlPathSegment => "Status";
+        public string UrlPathSegment => Properties.Resource.ViewStatusTitle;
 
         public IScreen HostScreen { get; }
 
         public List<string> Addresses { get; set; } = new List<string>();
 
         public ReactiveCommand StartStopCommand { get; }
+
+        public string StatusText => $"{Properties.Resource.ViewStatusServerStatusLabel}: {Properties.Resource.ServerStatusStopped}";
+
+        public string StartStopText => Properties.Resource.ActionServerStart;
 
         public StatusViewModel(IScreen hostScreen = null)
         {

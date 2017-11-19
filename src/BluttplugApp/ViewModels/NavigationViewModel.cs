@@ -28,17 +28,17 @@ namespace ButtplugApp.ViewModels
                 {
                     new NavigationEntry
                     {
-                        Title = "Settings",
+                        Title = Properties.Resource.ViewSettingsTitle,
                         Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new ServerSettingsViewModel()).Subscribe())
                     },
                     new NavigationEntry
                     {
-                        Title = "About",
+                        Title = Properties.Resource.ViewAboutTitle,
                         Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new AboutViewModel()).Subscribe())
                     },
                     new NavigationEntry
                     {
-                        Title = "License",
+                        Title = Properties.Resource.ViewLicenseTitle,
                         Command = ReactiveCommand.Create(() => Locator.Current.GetService<IScreen>().Router.Navigate.Execute(new LicenseViewModel()).Subscribe())
                     }
                 }

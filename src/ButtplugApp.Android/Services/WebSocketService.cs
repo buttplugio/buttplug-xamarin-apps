@@ -73,7 +73,7 @@ namespace ButtplugApp.Android.Services
 
             MessagingCenter.Subscribe<ServerCommandMessage>(this, nameof(ServerCommandMessage), OnServerMessage);
 
-            Toast.MakeText(this, "starting", ToastLength.Short).Show();
+            Toast.MakeText(this, Properties.Resource.NotificationServerStarted, ToastLength.Short).Show();
         }
 
         private void CreateForegroundNotification()
@@ -89,9 +89,9 @@ namespace ButtplugApp.Android.Services
                 .SetAutoCancel(true)
                 .SetContentIntent(pendingActivity)
                 .SetSmallIcon(Resource.Drawable.ic_logo)
-                .SetTicker(GetString(Resource.String.app_name))
-                .SetContentTitle(GetString(Resource.String.notification_server_running))
-                .AddAction(Resource.Drawable.ic_media_stop_light, GetString(Resource.String.notification_stop), pendingReceiver);
+                .SetTicker(Properties.Resource.ApplicationName)
+                .SetContentTitle(Properties.Resource.NotificationServerRunning)
+                .AddAction(Resource.Drawable.ic_media_stop_light, Properties.Resource.ActionServerStop, pendingReceiver);
 
             StartForeground(Resource.Id.websocket_notification, notification.Build());
         }
@@ -127,9 +127,6 @@ namespace ButtplugApp.Android.Services
 
         private void OnServerMessage(ServerCommandMessage message)
         {
-            if(message.Command == ServerCommand.Start)
-                Toast.MakeText(this, "Already Started", ToastLength.Short).Show();
-
             if (message.Command == ServerCommand.Stop)
                 this.StopSelf();
         }

@@ -11,6 +11,7 @@ using ButtplugApp.Views;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
 using ButtplugApp.Models;
+using System.Globalization;
 
 namespace ButtplugApp
 {
@@ -22,9 +23,16 @@ namespace ButtplugApp
 
         public Settings Settings => _settings ?? (_settings = new Settings(CrossSettings.Current));
 
+        private CultureInfo _currentCulture = null;
+
+        public CultureInfo CurrentCulture => _currentCulture ?? (_currentCulture = GetCurrentCulture());
+
         public App()
         {
             InitializeComponent();
+
+            // Set the current culture to our resource
+            ButtplugApp.Properties.Resource.Culture = GetCurrentCulture();
 
             var service = Locator.CurrentMutable;
 
@@ -41,7 +49,6 @@ namespace ButtplugApp
                   .Subscribe();
 
             MainPage = new MainPage();
-
         }
 
         protected override void OnStart()
@@ -50,6 +57,14 @@ namespace ButtplugApp
 
             if (Settings.StartWhenLaunched)
                 MessagingCenter.Send(new ServerCommandMessage { Command = ServerCommand.Start }, nameof(ServerCommandMessage));
+        }
+
+        private CultureInfo GetCurrentCulture()
+        {
+            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
+                return DependencyService.Get<ILocalise>().GetCurrentCultureInfo();
+
+            return CultureInfo.CurrentCulture;
         }
     }
 }
