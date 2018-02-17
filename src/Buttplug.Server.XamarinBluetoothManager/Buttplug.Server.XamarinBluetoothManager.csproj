@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Buttplug.Server" Version="0.1.2.540-master" />
+    <PackageReference Include="Plugin.BluetoothLE" Version="5.2.0" />
+  </ItemGroup>
+
+</Project>

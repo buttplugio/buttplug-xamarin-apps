@@ -205,7 +205,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\AboutResources.txt" />
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\values\Colors.xml">
       <SubType>Designer</SubType>
