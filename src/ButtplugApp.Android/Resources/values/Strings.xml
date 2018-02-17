@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Intiface</string>
+  <string name="keystore">keystore.db</string>
+  <string name="web_server_certificate">server.pem</string>
 </resources>

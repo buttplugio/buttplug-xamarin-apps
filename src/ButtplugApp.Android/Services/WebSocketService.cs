@@ -25,6 +25,7 @@ using Buttplug.Server;
 using ButtplugApp.Models;
 using Android.Widget;
 using Plugin.Settings;
+using Javax.Net.Ssl;
 
 namespace ButtplugApp.Android.Services
 {
@@ -33,16 +34,15 @@ namespace ButtplugApp.Android.Services
     {
         internal AsyncHttpServer Server;
         internal readonly Dictionary<string, MyWebSocketConnection> Sockets;
-        internal readonly IScheduledExecutorService Timer;
         internal readonly Settings Settings;
         private readonly IButtplugServerFactory _serverFactory;
         private readonly App _app;
+        private NotificationCompat.Builder _serviceNotification;
 
         public WebSocketService()
         {
             _app = Xamarin.Forms.Application.Current as App;
 
-            Timer = Executors.NewSingleThreadScheduledExecutor();
             Sockets = new Dictionary<string, MyWebSocketConnection>();
             _serverFactory = DependencyService.Get<IButtplugServerFactory>();
 
@@ -55,25 +55,27 @@ namespace ButtplugApp.Android.Services
 
             Sockets.Clear();
 
+            CreateForegroundNotification();
+
             Server = new AsyncHttpServer();
             Server.Websocket("/", new MyWebSocketServer(this, _serverFactory));
             if (Settings.EnableTLS)
             {
-                //Server.ListenSecure(Settings.WebSocketPort, );
+                _serviceNotification.SetContentTitle(Properties.Resource.NotificationServerStarting);
+                var task = new GetSSLContextTask(this);
+                task.Execute("localhost", "127.0.0.1");
+                //   Server.ListenSecure(Settings.WebSocketPort, Utils.Cert.GetSSLContext(this));
+                Toast.MakeText(this, Properties.Resource.NotificationServerStarting, ToastLength.Short).Show();
             }
             else
             {
                 Server.Listen(Settings.WebSocketPort);
+                Toast.MakeText(this, Properties.Resource.NotificationServerStarted, ToastLength.Short).Show();
             }
 
-            //RaiseStartedEvent();
-            CreateForegroundNotification();
-
-            Timer.ScheduleAtFixedRate(this, 3000, 3000, TimeUnit.Milliseconds);
+            StartForeground(Resource.Id.websocket_notification, _serviceNotification.Build());
 
             MessagingCenter.Subscribe<ServerCommandMessage>(this, nameof(ServerCommandMessage), OnServerMessage);
-
-            Toast.MakeText(this, Properties.Resource.NotificationServerStarted, ToastLength.Short).Show();
         }
 
         private void CreateForegroundNotification()
@@ -85,15 +87,19 @@ namespace ButtplugApp.Android.Services
             var receiver = new Intent(this, typeof(StopReceiver));
             var pendingReceiver = PendingIntent.GetBroadcast(this, 0, receiver, 0);
 
-            var notification = new NotificationCompat.Builder(this)
+            _serviceNotification = new NotificationCompat.Builder(this)
                 .SetAutoCancel(true)
                 .SetContentIntent(pendingActivity)
                 .SetSmallIcon(Resource.Drawable.ic_logo)
                 .SetTicker(Properties.Resource.ApplicationName)
                 .SetContentTitle(Properties.Resource.NotificationServerRunning)
                 .AddAction(Resource.Drawable.ic_media_stop_light, Properties.Resource.ActionServerStop, pendingReceiver);
+        }
 
-            StartForeground(Resource.Id.websocket_notification, notification.Build());
+        private void UpdateForegroundNotification()
+        {
+            var notifcationManager = GetSystemService(Service.NotificationService) as NotificationManager;
+            notifcationManager.Notify(Resource.Id.websocket_notification, _serviceNotification.Build());
         }
 
         [return: GeneratedEnum]
@@ -104,9 +110,6 @@ namespace ButtplugApp.Android.Services
 
         public override void OnDestroy()
         {
-            Timer.ShutdownNow();
-            //EventBus.getDefault().removeAllStickyEvents();
-            //EventBus.getDefault().postSticky(new ServerStoppedEvent());
             Server.Stop();
             AsyncServer.Default.Stop(); // no, really, I mean stop
 
@@ -130,6 +133,29 @@ namespace ButtplugApp.Android.Services
             if (message.Command == ServerCommand.Stop)
                 this.StopSelf();
         }
+
+        private class GetSSLContextTask : AsyncTask<string, int, Javax.Net.Ssl.SSLContext>
+        {
+            private readonly WebSocketService _webSocketService;
+
+            public GetSSLContextTask(WebSocketService context)
+            {
+                _webSocketService = context;
+            }
+
+            protected override SSLContext RunInBackground(params string[] @params)
+            {
+                return Utils.Cert.GetSSLContext(_webSocketService);
+            }
+
+            protected override void OnPostExecute(SSLContext result)
+            {
+                _webSocketService.Server.ListenSecure(_webSocketService.Settings.WebSocketPort, result);
+                _webSocketService._serviceNotification.SetContentTitle(Properties.Resource.NotificationServerRunning);
+                _webSocketService.UpdateForegroundNotification();
+                Toast.MakeText(_webSocketService, Properties.Resource.NotificationServerStarted, ToastLength.Short).Show();
+            }
+        }
     }
 
     internal class MyWebSocketServer : Java.Lang.Object, IWebSocketRequestCallback
@@ -146,7 +172,7 @@ namespace ButtplugApp.Android.Services
         public void OnConnected(IWebSocket webSocket, IAsyncHttpServerRequest request)
         {
             var socket = request.Socket as AsyncNetworkSocket;
-            if(socket == null)
+            if (socket == null)
             {
                 webSocket.Send(new ButtplugJsonMessageParser().Serialize(new ButtplugError(
                         $"Unsupported AsyncSocket type ({request.GetType().FullName})", ButtplugError.ErrorClass.ERROR_INIT, ButtplugConsts.SystemMsgId)));
@@ -204,7 +230,7 @@ namespace ButtplugApp.Android.Services
             try
             {
                 //if (ex != null)
-                    //("WebSocket", "Error");
+                //("WebSocket", "Error");
             }
             finally
             {

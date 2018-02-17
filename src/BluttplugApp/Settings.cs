@@ -14,7 +14,7 @@ namespace ButtplugApp
         public const bool RestrictConnections_Default = true;
         public const string RestrictConnections_Key = "server_websocket_restrict_connections";
 
-        public const bool EnableTLS_Default = false;
+        public const bool EnableTLS_Default = true;
         public const string EnableTLS_Key = "server_websocket_enable_tls";
 
         public const bool StartWhenLaunched_Default = true;

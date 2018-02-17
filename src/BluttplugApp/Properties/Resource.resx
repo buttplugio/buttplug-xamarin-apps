@@ -141,6 +141,10 @@
   <data name="NotificationServerStarted" xml:space="preserve">
     <value>Server has started</value>
   </data>
+  <data name="NotificationServerStarting" xml:space="preserve">
+    <value>Starting Server....</value>
+    <comment>Buttplug server is starting but is not ready yet</comment>
+  </data>
   <data name="NotificationServerStopped" xml:space="preserve">
     <value>Server has no longer running</value>
   </data>
