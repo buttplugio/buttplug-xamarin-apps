@@ -1,11 +1,11 @@
-﻿using ButtplugApp.Android.Utils;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
+using Intiface.Android.Utils;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ButtplugApp.Android.Localise))]
+[assembly: Dependency(typeof(Intiface.Android.Localise))]
 
-namespace ButtplugApp.Android
+namespace Intiface.Android
 {
     public class Localise : Models.ILocalise
     {

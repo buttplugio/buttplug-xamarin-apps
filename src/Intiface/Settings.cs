@@ -1,7 +1,7 @@
 ﻿using System;
 using Plugin.Settings.Abstractions;
 
-namespace ButtplugApp
+namespace Intiface
 {
     public class Settings : ISettings
     {

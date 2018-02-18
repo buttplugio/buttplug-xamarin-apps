@@ -1,5 +1,4 @@
-﻿using ButtplugApp.UWP.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,8 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Intiface.UWP.Services;
 
-namespace ButtplugApp.UWP
+namespace Intiface.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

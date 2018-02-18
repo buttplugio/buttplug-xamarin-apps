@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 using ReactiveUI;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using ButtplugApp.ViewModels;
 using System.Reactive.Disposables;
+using Intiface.ViewModels;
 
-namespace ButtplugApp.Views
+namespace Intiface.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ServerSettingsView : ReactiveContentPage<ServerSettingsViewModel>

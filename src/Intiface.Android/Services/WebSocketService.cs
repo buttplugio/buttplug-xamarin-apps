@@ -18,15 +18,15 @@ using Com.Koushikdutta.Async;
 using Xamarin.Forms;
 
 using Buttplug.Core;
-using ButtplugApp.Android.Receivers;
 using ButtplugError = Buttplug.Core.Messages.Error;
 
 using Buttplug.Server;
-using ButtplugApp.Models;
 using Android.Widget;
+using Intiface.Android.Receivers;
+using Intiface.Models;
 using Plugin.Settings;
 
-namespace ButtplugApp.Android.Services
+namespace Intiface.Android.Services
 {
     [Service]
     public class WebSocketService : Service, IRunnable

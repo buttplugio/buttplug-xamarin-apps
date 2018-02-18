@@ -1,4 +1,4 @@
-﻿using ButtplugApp.Models;
+﻿using Intiface.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ButtplugApp.Extensions
+namespace Intiface.Extensions
 {
     // You exclude the 'Extension' suffix when using in Xaml markup
     [ContentProperty(nameof(Text))]

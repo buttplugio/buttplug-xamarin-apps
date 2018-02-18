@@ -1,4 +1,4 @@
-﻿namespace ButtplugApp.UWP
+﻿namespace Intiface.UWP
 {
     public sealed partial class MainPage
     {
@@ -6,7 +6,7 @@
         {
             this.InitializeComponent();
 
-            LoadApplication(new ButtplugApp.App());
+            LoadApplication(new Intiface.App());
         }
     }
 }

@@ -2,9 +2,9 @@
 <rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-             xmlns:ex="clr-namespace:ButtplugApp.Extensions"
-             xmlns:local="clr-namespace:ButtplugApp"
-             x:Class="ButtplugApp.Views.StatusView"
+             xmlns:ex="clr-namespace:Intiface.Extensions"
+             xmlns:local="clr-namespace:Intiface"
+             x:Class="Intiface.Views.StatusView"
              x:TypeArguments="local:ViewModels.StatusViewModel">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="StartStop" Order="Primary" />

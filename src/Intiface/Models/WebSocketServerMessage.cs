@@ -1,6 +1,6 @@
 ﻿using Buttplug.Server;
 
-namespace ButtplugApp.Models
+namespace Intiface.Models
 {
     public enum ServerCommand
     {

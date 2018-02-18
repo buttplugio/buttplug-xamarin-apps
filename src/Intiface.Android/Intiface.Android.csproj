@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ButtplugApp.Android</RootNamespace>
-    <AssemblyName>ButtplugApp.Android</AssemblyName>
+    <RootNamespace>Intiface.Android</RootNamespace>
+    <AssemblyName>Intiface.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -192,8 +192,8 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Receivers\StopReceiver.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Services\ButtplugServerFactory.cs" />
     <Compile Include="Services\Localise.cs" />
     <Compile Include="Services\WebSocketService.cs" />

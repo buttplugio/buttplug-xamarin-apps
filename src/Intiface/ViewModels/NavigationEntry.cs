@@ -5,7 +5,7 @@ using System.Text;
 using ReactiveUI;
 using Xamarin.Forms;
 
-namespace ButtplugApp.ViewModels
+namespace Intiface.ViewModels
 {
     public class NavigationEntry : ReactiveObject
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ButtplugApp.Android.Utils
+namespace Intiface.Android.Utils
 {
     public class PlatformCulture
     {

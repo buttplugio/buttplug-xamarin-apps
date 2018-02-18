@@ -3,9 +3,9 @@ using ReactiveUI;
 using Splat;
 using System;
 
-using ButtplugApp;
+using Intiface;
 
-namespace ButtplugApp.ViewModels
+namespace Intiface.ViewModels
 {
     public class ServerSettingsViewModel : ReactiveObject, IRoutableViewModel
     {

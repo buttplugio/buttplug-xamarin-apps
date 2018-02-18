@@ -12,8 +12,8 @@ using Android.Widget;
 
 using Buttplug.Server;
 
-[assembly: Xamarin.Forms.Dependency(typeof(ButtplugApp.Android.Services.ButtplugServerFactory))]
-namespace ButtplugApp.Android.Services
+[assembly: Xamarin.Forms.Dependency(typeof(Intiface.Android.Services.ButtplugServerFactory))]
+namespace Intiface.Android.Services
 {
     public class ButtplugServerFactory : IButtplugServerFactory
     {

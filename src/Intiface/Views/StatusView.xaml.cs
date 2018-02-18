@@ -9,10 +9,9 @@ using ReactiveUI;
 using ReactiveUI.XamForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Intiface.ViewModels;
 
-using ButtplugApp.ViewModels;
-
-namespace ButtplugApp.Views
+namespace Intiface.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StatusView : ReactiveContentPage<StatusViewModel>

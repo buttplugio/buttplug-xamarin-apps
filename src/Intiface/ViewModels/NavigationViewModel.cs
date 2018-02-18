@@ -8,7 +8,7 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Reactive;
 
-namespace ButtplugApp.ViewModels
+namespace Intiface.ViewModels
 {
     public class NavigationViewModel : ReactiveObject, ISupportsActivation
     {

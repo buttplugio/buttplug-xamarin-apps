@@ -2,8 +2,8 @@
 <rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                           xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-                          xmlns:local="clr-namespace:ButtplugApp"
-                          x:Class="ButtplugApp.Views.License"
+                          xmlns:local="clr-namespace:Intiface"
+                          x:Class="Intiface.Views.License"
                           x:TypeArguments="local:ViewModels.LicenseViewModel">
     <ContentPage.Content>
         <ScrollView>

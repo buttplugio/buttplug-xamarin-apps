@@ -4,11 +4,11 @@ using Android.OS;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Content;
-using ButtplugApp.Android.Services;
-using ButtplugApp.Models;
 using System;
+using Intiface.Android.Services;
+using Intiface.Models;
 
-namespace ButtplugApp.Android
+namespace Intiface.Android
 {
     [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : FormsAppCompatActivity

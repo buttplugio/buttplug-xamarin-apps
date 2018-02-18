@@ -1,11 +1,10 @@
 ﻿using Android.Content;
 using Android.Widget;
-using ButtplugApp.Android.Services;
+using Intiface.Android.Services;
 using Xamarin.Forms;
+using Intiface.Models;
 
-using ButtplugApp.Models;
-
-namespace ButtplugApp.Android.Receivers
+namespace Intiface.Android.Receivers
 {
     [BroadcastReceiver]
     public class StopReceiver : BroadcastReceiver

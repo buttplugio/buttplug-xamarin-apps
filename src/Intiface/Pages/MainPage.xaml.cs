@@ -8,11 +8,10 @@ using ReactiveUI;
 using ReactiveUI.XamForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using ButtplugApp.ViewModels;
 using System.Reactive.Disposables;
+using Intiface.ViewModels;
 
-namespace ButtplugApp.Pages
+namespace Intiface.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ReactiveMasterDetailPage<NavigationViewModel>

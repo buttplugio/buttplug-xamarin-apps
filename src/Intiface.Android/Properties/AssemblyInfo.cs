@@ -10,7 +10,7 @@ using Android.App;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ButtplugApp.Android")]
+[assembly: AssemblyProduct("Intiface.Android")]
 [assembly: AssemblyCopyright("Copyright © Metafetish 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

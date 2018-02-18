@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <rxui:ReactiveContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-                          xmlns:local="clr-namespace:ButtplugApp"
+                          xmlns:local="clr-namespace:Intiface"
                           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                           xmlns:rxui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
-                          xmlns:ex="clr-namespace:ButtplugApp.Extensions"                         
-                          x:Class="ButtplugApp.Views.ServerSettingsView"
+                          xmlns:ex="clr-namespace:Intiface.Extensions"                         
+                          x:Class="Intiface.Views.ServerSettingsView"
                           x:TypeArguments="local:ViewModels.ServerSettingsViewModel">
     <rxui:ReactiveContentPage.ToolbarItems>
         <ToolbarItem x:Name="Update" Text="{ex:UseLocale ViewSettingsWebSocketUpdateLabel}" />

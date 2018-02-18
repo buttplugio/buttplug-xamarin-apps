@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ButtplugApp.Models
+namespace Intiface.Models
 {
     public interface ILocalise
     {

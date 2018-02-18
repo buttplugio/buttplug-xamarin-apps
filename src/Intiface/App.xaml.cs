@@ -4,16 +4,16 @@ using ReactiveUI.XamForms;
 using Splat;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using ButtplugApp.Pages;
-using ButtplugApp.ViewModels;
-using ButtplugApp.Views;
 using Plugin.Settings.Abstractions;
 using Plugin.Settings;
-using ButtplugApp.Models;
 using System.Globalization;
+using Intiface.Models;
+using Intiface.Pages;
+using Intiface.Properties;
+using Intiface.ViewModels;
+using Intiface.Views;
 
-namespace ButtplugApp
+namespace Intiface
 {
     public partial class App : Application, IScreen
     {
@@ -32,7 +32,7 @@ namespace ButtplugApp
             InitializeComponent();
 
             // Set the current culture to our resource
-            ButtplugApp.Properties.Resource.Culture = GetCurrentCulture();
+            Resource.Culture = GetCurrentCulture();
 
             var service = Locator.CurrentMutable;
 

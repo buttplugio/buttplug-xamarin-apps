@@ -1,15 +1,14 @@
-﻿using ButtplugApp.ViewModels;
-using ReactiveUI.XamForms;
+﻿using ReactiveUI.XamForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Intiface.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ButtplugApp.Views
+namespace Intiface.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class About : ReactiveContentPage<AboutViewModel>

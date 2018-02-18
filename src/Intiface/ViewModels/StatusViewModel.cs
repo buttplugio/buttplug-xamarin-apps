@@ -4,11 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
-
-using ButtplugApp.Models;
 using System.Resources;
+using Intiface.Models;
 
-namespace ButtplugApp.ViewModels
+namespace Intiface.ViewModels
 {
     public class StatusViewModel : ReactiveObject, IRoutableViewModel
     {
