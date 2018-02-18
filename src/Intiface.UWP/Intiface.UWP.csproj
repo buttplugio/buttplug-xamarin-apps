@@ -160,12 +160,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BluttplugApp\ButtplugApp.csproj">
+    <ProjectReference Include="..\Intiface\Intiface.csproj">
       <Project>{56873e92-fb88-4b99-a10b-2af019a33b56}</Project>
-      <Name>ButtplugApp</Name>
+      <Name>Intiface</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
