@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ButtplugApp.UWP.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -30,6 +32,13 @@ namespace ButtplugApp.UWP
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            var serverTaskBuilder = new BackgroundTaskBuilder
+            {
+                Name = AcceptWebSocketTask.TaskName,
+                TaskEntryPoint = typeof(AcceptWebSocketTask).FullName,
+            };
+            serverTaskBuilder.SetTrigger(new SystemTrigger(SystemTriggerType.NetworkStateChange, false));
         }
 
         /// <summary>
